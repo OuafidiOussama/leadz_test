@@ -14,7 +14,7 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ApiResource(
-    operations:[
+    operations: [
         new GetCollection(
             normalizationContext: ['groups' => ['review:list']]
         ),
@@ -61,7 +61,6 @@ class Review
 
     #[ORM\ManyToOne(targetEntity: Book::class, inversedBy: 'reviews')]
     #[Assert\NotNull]
-    #[ORM\JoinColumn(nullable: false)]
     #[Groups(['review:write', 'review:read'])]
     public ?Book $book;
 

@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Delete;
 use ApiPlatform\Metadata\Get;
@@ -13,6 +15,8 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
+
+#[ApiFilter(SearchFilter::class, properties: ['title' => 'ipartial', 'genre' => 'ipartial', 'author.firstName' => 'ipartial', 'author.lastName' => 'ipartial'])]
 
 #[ApiResource(
     operations: [
@@ -62,14 +66,12 @@ class Book
     public ?string $genre = '';
 
     #[ORM\ManyToOne(targetEntity: Author::class, inversedBy: 'books')]
-    // #[ORM\JoinColumn(nullable: false)]
     #[Assert\NotNull]
     #[Groups(['book:list', 'book:read', 'book:write', 'review:read'])]
     public ?Author $author;
 
     // if you want to delete the author and all its books please add "cascade:["remove"]" after mappedBy in both Author.php & Book.php
     #[ORM\OneToMany(targetEntity: Review::class, mappedBy: 'book')]
-    #[ORM\JoinColumn(nullable: false)]
     #[Groups(['book:read'])]
     public Collection $reviews;
 
