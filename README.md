@@ -2,8 +2,8 @@
 
 ## Description
 
-    Leadz_Test_API is an API created to manage a 'Library' so users can brows their favorite Books with minimale effort
-    due to its simplicity.
+    Leadz_Test_API is an API created to manage a 'Library' so users can browse
+    their favorite Books with minimale effort due to its simplicity.
 
 ## Features
 
