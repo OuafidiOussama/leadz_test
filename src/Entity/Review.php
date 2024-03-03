@@ -37,7 +37,7 @@ class Review
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['review:list', 'review:read'])]
+    #[Groups(['book:read', 'review:list', 'review:read'])]
     public ?int $id = null;
 
     #[ORM\Column]

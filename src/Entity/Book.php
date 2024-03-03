@@ -42,7 +42,7 @@ class Book
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups(['book:list', 'book:read'])]
+    #[Groups(['author:read', 'book:list', 'book:read'])]
     public ?int $id = null;
 
     #[ORM\Column]
@@ -57,12 +57,12 @@ class Book
 
     #[ORM\Column]
     #[Assert\NotNull]
-    #[Groups(['book:read', 'book:write'])]
+    #[Groups(['author:read', 'book:list', 'book:read', 'book:write'])]
     public ?\DateTimeImmutable $publishedAt = null;
 
     #[ORM\Column]
     #[Assert\NotBlank]
-    #[Groups(['book:list', 'book:read', 'book:write', 'review:read'])]
+    #[Groups(['author:read', 'book:list', 'book:read', 'book:write', 'review:read'])]
     public ?string $genre = '';
 
     #[ORM\ManyToOne(targetEntity: Author::class, inversedBy: 'books')]

@@ -33,3 +33,6 @@
 -   Run `symfony console doctrine:database:create ` to create your database
 -   Run `symfony console doctrine:migrations:migrate ` to migrate all the tables to your database
 -   Run `symfony serve ` to start your API
+
+### NB: if you didn't clone the front repository Please Check the README down bellow:
+- [Front-End_Installation](https://github.com/OuafidiOussama/Leadz_test_front/blob/master/README.md#instruction-)
